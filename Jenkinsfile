@@ -22,5 +22,17 @@ pipeline {
 			}
 			}
 		}
+		stage (sonarstatus) {
+			steps {
+				script {
+					def qualitygate = waitForQualityGate()
+					if (qualitygate.status != "OK") {
+						echo "Quality gate is passed"
 	}
+					else {
+						echo "Quality Gate has failed"
+					}
+				}
+			}
+		}
 }
