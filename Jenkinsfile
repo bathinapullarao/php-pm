@@ -9,5 +9,9 @@ pipeline {
 		stage ('sonar') {
 			node ('master') {
 				withSonarQubeEnv('sonar') {
-					sh 'cd '
-			
+					sh 'cd php-pm'; ${scannerHome}/bin/sonar-scanner;
+				}
+			}
+		}
+	}
+}
