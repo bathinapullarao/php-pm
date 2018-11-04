@@ -6,6 +6,13 @@ pipeline {
 		scannerHome = tool 'sonar'
 	}
 	stages {
+		stage ('checkout') {
+			steps {
+				node ('master') {
+					checkout scm
+				}
+			}
+		}
 		stage ('sonar') {
 			steps {
 			node ('master') {
