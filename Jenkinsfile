@@ -22,6 +22,13 @@ pipeline {
 			}
 			}
 		}
+		stage ('sleep') {
+			steps {
+				node ('master') {
+					sleep 100 
+				}
+			}
+		}
 		stage (sonarstatus) {
 			steps {
 				script {
