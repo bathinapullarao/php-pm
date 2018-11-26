@@ -34,10 +34,10 @@ pipeline {
 				script {
 					def qualitygate = waitForQualityGate()
 					if (qualitygate.status != "OK") {
-						echo "Quality gate is passed"
+						echo "Quality gate is fail"
 	}
 					else {
-						echo "Quality Gate has failed"
+						echo "Quality Gate has pass"
 					}
 				}
 			}
