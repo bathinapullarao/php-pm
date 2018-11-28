@@ -13,15 +13,8 @@ pipeline {
 				}
 			}
 		}
-		stage ('sonar') {
-			steps {
-			node ('master') {
-				withSonarQubeEnv('sonar') {
-					sh '${scannerHome}/bin/sonar-scanner'
-				}
-			}
-			}
-		}
+		
+		
 		
 		stage ('Static code analysis') {
 			steps{
@@ -32,6 +25,19 @@ pipeline {
 				}}}
 		
 		
+		
+		
+		stage ('sonar') {
+			steps {
+			node ('master') {
+				withSonarQubeEnv('sonar') {
+					sh '${scannerHome}/bin/sonar-scanner'
+				}
+			}
+			}
+		}
+		
+			
 		stage ('sleep') {
 			steps {
 				node ('master') {
